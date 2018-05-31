@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->SMTPAuth = true; // authentication enabled
   $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
   $mail->Host = "tls://smtp.gmail.com";
-  $mail->Port = 475;
+  $mail->Port = 465;
   $mail->IsHTML(true);
 //  $mail->SMTPOptions = array(
 //    'ssl' => array(
