@@ -84,8 +84,7 @@ $(document).ready(function() {
     },
     submitHandler: function (form) {
       $.post( "mail.php", $(form).serialize());
-      $(form).find('input').val("");
-      $(form).find('textarea').html("");
+      $(form).find('input,textarea').val("");
       $('#modal-container').removeAttr('class').addClass('one');
       $('body').addClass('modal-active');
     }
