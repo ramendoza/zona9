@@ -59,7 +59,39 @@ $(document).ready(function() {
         percentage: true,
     });
 
-    // Sticky Menu
+    //contact Form
+  $("#contactForm").validate({
+
+    errorElement: "span",
+    errorClass: 'help-block',
+    errorPlacement: function (error, element) {
+
+    },
+    highlight: function (element, errorClass, validClass) {
+      if ($(element).parent().hasClass('input-group')) {
+        $(element).parent().parent().addClass('has-error');
+      } else {
+        $(element).parent().addClass('has-error');
+      }
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      if ($(element).parent().hasClass('input-group')) {
+        $(element).parent().parent().addClass('has-error');
+      } else {
+        $(element).parent().removeClass('has-error');
+        $(element).parent().addClass('has-success');
+      }
+    },
+    submitHandler: function (form) {
+      $.post( "mail.php", $(form).serialize())
+        .done(function( data ) {
+          alert( "Data Loaded: " + data );
+        });
+    }
+  });
+
+
+  // Sticky Menu
     $(".header-area").sticky({
         topSpacing: 0
     });
