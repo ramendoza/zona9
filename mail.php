@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
   $mail->SMTPAuth = true; // authentication enabled
   $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-  $mail->Host = "smtp.gmail.com";
-  $mail->Port = 587;
+  $mail->Host = "tls://smtp.gmail.com";
+  $mail->Port = 475;
   $mail->IsHTML(true);
 //  $mail->SMTPOptions = array(
 //    'ssl' => array(
