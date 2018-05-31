@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->IsSMTP(); // enable SMTP
   $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
   $mail->SMTPAuth = true; // authentication enabled
- $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+  $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
   $mail->Host = "smtp.gmail.com";
-  $mail->Port = 465;
+  $mail->Port = 587;
   $mail->IsHTML(true);
 //  $mail->SMTPOptions = array(
 //    'ssl' => array(
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //  );
   $mail->Username = "ralexm14@gmail.com";
   $mail->Password = "Prospero123";
-  $mail->SetFrom("zona9digital@gmail.com","Zona9 Digital");
+  $mail->SetFrom("ralexm14@gmail.com","Zona9 Digital");
   $mail->Subject = "Test";
   $mail->Body = "<h1>Nueva solicitud de contacto</h1>" .
     "<p>Un nuevo cliente ha enviado datos en el formulario de contacto</p>" .
