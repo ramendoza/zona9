@@ -18,13 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $message = $_POST['message'];
 
   $mail = new PHPMailer\PHPMailer\PHPMailer();// create a new object
-  $mail->IsSMTP(); // enable SMTP
-  $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-  $mail->SMTPAuth = true; // authentication enabled
-  $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-  $mail->Host = "smtp.gmail.com";
-  $mail->Port = 578;
-  $mail->IsHTML(true);
 //  $mail->SMTPOptions = array(
 //    'ssl' => array(
 //      'verify_peer' => false,
@@ -32,10 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //      'allow_self_signed' => true
 //    )
 //  );
+  $mail->isSMTP();
+  $mail->SMTPDebug = 1;
+ $mail->Host = gethostbyname('smtp.gmail.com');
+  $mail->Port = 587;
+  $mail->SMTPSecure = 'tls';
+  $mail->SMTPAuth = true;
   $mail->Username = "ralexm14@gmail.com";
   $mail->Password = "Prospero123";
-  $mail->SetFrom("ralexm14@gmail.com","Zona9 Digital");
-  $mail->Subject = "Test";
+  $mail->setFrom('ralexm14@example.com', 'Zona9 Digital');
+  $mail->addReplyTo($mail_client, $name);
+  $mail->addAddress('ramendoza@uci.cu');
+  $mail->Subject = 'testing';
   $mail->Body = "<h1>Nueva solicitud de contacto</h1>" .
     "<p>Un nuevo cliente ha enviado datos en el formulario de contacto</p>" .
     "<ul>" .
@@ -44,8 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     "<li>T&iacute;tulo: ".$subject."</li>" .
     "<li>Mensaje: ".$message."</li>" .
     "</ul>";
-  $mail->AddAddress("ramendoza@uci.cu");
-  $mail->addReplyTo($mail_client, $name);
   $mail->Send();
 
 }
