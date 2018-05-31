@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->isSMTP();
   $mail->SMTPDebug = 1;
  $mail->Host = gethostbyname('smtp.gmail.com');
-  $mail->Port = 587;
-  $mail->SMTPSecure = 'tls';
+  $mail->Port = 465;
+  $mail->SMTPSecure = 'ssl';
   $mail->SMTPAuth = true;
   $mail->Username = "ralexm14@gmail.com";
   $mail->Password = "Prospero123";
-  $mail->setFrom('ralexm14@example.com', 'Zona9 Digital');
+  $mail->setFrom('ralexm14@gmail.com', 'Zona9 Digital');
   $mail->addReplyTo($mail_client, $name);
   $mail->addAddress('ramendoza@uci.cu');
   $mail->Subject = 'testing';
