@@ -83,13 +83,20 @@ $(document).ready(function() {
       }
     },
     submitHandler: function (form) {
-      $.post( "mail.php", $(form).serialize())
-        .done(function( data ) {
-          alert( "Data Loaded: " + data );
-        });
+      $.post( "mail.php", $(form).serialize());
+      $(form).find('input').val("");
+      $(form).find('textarea').html("");
+      $('#modal-container').removeAttr('class').addClass('one');
+      $('body').addClass('modal-active');
     }
   });
 
+  //modal
+
+  $('#modal-container').click(function(){
+    $(this).addClass('out');
+    $('body').removeClass('modal-active');
+  });
 
   // Sticky Menu
     $(".header-area").sticky({
