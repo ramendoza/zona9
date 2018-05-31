@@ -29,12 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->SMTPDebug = 2;
  $mail->Host = 'smtp.gmail.com';
   $mail->Port = 587;
-  //$mail->SMTPSecure = 'ssl';
+  $mail->SMTPSecure = 'tls';
   $mail->SMTPAuth = true;
   $mail->Username = "ralexm14@gmail.com";
   $mail->Password = "Prospero123";
   $mail->setFrom('ralexm14@gmail.com', 'Zona9 Digital');
-  $mail->addReplyTo($mail_client, $name);
   $mail->addAddress('ramendoza@uci.cu');
   $mail->Subject = 'testing';
   $mail->Body = "<h1>Nueva solicitud de contacto</h1>" .
