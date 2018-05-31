@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //  );
   $mail->isSMTP();
   $mail->SMTPDebug = 2;
- $mail->Host = 'smtp.gmail.com';
+  $mail->Host = 'smtp.gmail.com';
   $mail->Port = 587;
   $mail->SMTPSecure = 'tls';
   $mail->SMTPAuth = true;
