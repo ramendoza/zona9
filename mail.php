@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
   $mail->SMTPAuth = true; // authentication enabled
   $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-  $mail->Host = "tls://smtp.gmail.com";
-  $mail->Port = 465;
+  $mail->Host = "smtp.gmail.com";
+  $mail->Port = 578;
   $mail->IsHTML(true);
 //  $mail->SMTPOptions = array(
 //    'ssl' => array(
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     "<li>Mensaje: ".$message."</li>" .
     "</ul>";
   $mail->AddAddress("ramendoza@uci.cu");
+  $mail->addReplyTo($mail_client, $name);
   $mail->Send();
 
 }
